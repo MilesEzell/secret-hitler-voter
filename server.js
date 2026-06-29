@@ -39,7 +39,7 @@ function createRoom(code, hostName) {
     ballotCount: { ja: 0, nein: 0, cast: 0 },
     lastResult: null,
     history: [],
-    publicVoting: false,
+    publicVoting: true,
   };
 }
 
