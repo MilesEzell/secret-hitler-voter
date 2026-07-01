@@ -445,41 +445,46 @@ select {
 }
 
 /* ── Voting Mode Toggle (lobby) ─────────────────────────────────── */
-#lobby-voting-mode {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px;
+.voting-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border: var(--border);
-  background: var(--color-bone);
+  overflow: hidden;
 }
 
-.voting-mode-label {
+.voting-option {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  min-height: var(--touch-min);
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.05em;
   cursor: pointer;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  padding: 0 8px;
+  text-align: center;
+  border-right: var(--border);
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.voting-mode-label input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  min-height: unset;
-  border: var(--border);
-  accent-color: var(--color-ink);
-  cursor: pointer;
-  flex-shrink: 0;
+.voting-option:last-child {
+  border-right: none;
 }
 
-.voting-mode-hint {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-muted);
-  letter-spacing: 0.04em;
+.voting-option:has(input:checked) {
+  background: var(--color-ink);
+  color: var(--color-parchment);
+}
+
+.voting-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
 }
 
 /* ── Per-player Vote List (result) ──────────────────────────────── */

@@ -54,7 +54,6 @@ const els = {
   resultVoteList:    document.getElementById('result-vote-list'),
   // lobby voting toggle
   lobbyVotingMode:   document.getElementById('lobby-voting-mode'),
-  togglePublicVoting: document.getElementById('toggle-public-voting'),
   // error
   errorToast:        document.getElementById('error-toast'),
 };
@@ -358,7 +357,8 @@ els.roomCodeInput.addEventListener('keydown', e => {
 });
 
 els.btnStartGame.addEventListener('click', () => {
-  socket.send('game:start', { publicVoting: els.togglePublicVoting.checked });
+  const publicVoting = document.querySelector('input[name="voting-mode"]:checked')?.value !== 'anonymous';
+  socket.send('game:start', { publicVoting });
 });
 
 els.selectPresident.addEventListener('change', () => {
